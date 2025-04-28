@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+  font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --bg-color: #f4f3f2;
+  --text-color: #1e1f13;
+  --primary-color: #F6E9E4;
+  --accent: #D9B8A6;
+
+  --step--2: clamp(0.5556rem, 0.7143rem + -0.0992vw, 0.6944rem);
+  --step--1: clamp(0.8333rem, 0.8333rem + 0vw, 0.8333rem);
+  --step-0: clamp(1rem, 0.9643rem + 0.1786vw, 1.25rem);
+  --step-1: clamp(1.2rem, 1.1036rem + 0.4821vw, 1.875rem);
+  --step-2: clamp(1.44rem, 1.2439rem + 0.9804vw, 2.8125rem);
+  --step-3: clamp(1.728rem, 1.3722rem + 1.7791vw, 4.2188rem);
+  --step-4: clamp(2.0736rem, 1.4658rem + 3.0389vw, 6.3281rem);
+  --step-5: clamp(2.4883rem, 1.4878rem + 5.0028vw, 9.4922rem);
+  --step-6: clamp(2.986rem, 1.3785rem + 8.0374vw, 14.2383rem);
+
+  /* @link https://utopia.fyi/space/calculator?c=320,16,1.2,2560,20,1.5,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|4,s-l&g=s,l,xl,12 */
+
+  --space-3xs: clamp(0.25rem, 0.2411rem + 0.0446vw, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4821rem + 0.0893vw, 0.625rem);
+  --space-xs: clamp(0.75rem, 0.7232rem + 0.1339vw, 0.9375rem);
+  --space-s: clamp(1rem, 0.9643rem + 0.1786vw, 1.25rem);
+  --space-m: clamp(1.5rem, 1.4464rem + 0.2679vw, 1.875rem);
+  --space-l: clamp(2rem, 1.9286rem + 0.3571vw, 2.5rem);
+  --space-xl: clamp(3rem, 2.8929rem + 0.5357vw, 3.75rem);
+  --space-2xl: clamp(4rem, 3.8571rem + 0.7143vw, 5rem);
+  --space-3xl: clamp(4rem, 3.8571rem + 0.7143vw, 5rem);
+
+  /* One-up pairs */
+  --space-3xs-2xs: clamp(0.25rem, 0.1964rem + 0.2679vw, 0.625rem);
+  --space-2xs-xs: clamp(0.5rem, 0.4375rem + 0.3125vw, 0.9375rem);
+  --space-xs-s: clamp(0.75rem, 0.6786rem + 0.3571vw, 1.25rem);
+  --space-s-m: clamp(1rem, 0.875rem + 0.625vw, 1.875rem);
+  --space-m-l: clamp(1.5rem, 1.3571rem + 0.7143vw, 2.5rem);
+  --space-l-xl: clamp(2rem, 1.75rem + 1.25vw, 3.75rem);
+  --space-xl-2xl: clamp(3rem, 2.7143rem + 1.4286vw, 5rem);
+  --space-2xl-3xl: clamp(4rem, 3.8571rem + 0.7143vw, 5rem);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  color: var(--text-color);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+::selection {
+  background-color: var(--accent);
+}
+
+p {
+  font-size: var(--step-0);
+  opacity: 0.7;
+}
+h6 {
+  font-size: var(--step-1);
+}
+h5 {
+  font-size: var(--step-2);
+  letter-spacing: -1px;
+}
+h4 {
+  font-size: var(--step-3);
+  letter-spacing: -2px;
+}
+h3 {
+  font-size: var(--step-4);
+  letter-spacing: -1px;
+}
+h2 {
+  font-size: var(--step-5);
+  letter-spacing: -5px;
+}
+h1 {
+  font-size: var(--step-6);
+  letter-spacing: -3px;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  padding: var(--space-2xs) var(--space-m);
+  border: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--step-0);
+  font-weight: 400;
+  border-radius: 8px;
+  transition: 0.5s ease;
+}
+
+.button.filled {
+  background-color: var(--accent);
+  color: var(--text-color);
+}
+
+.button.filled:hover {
+  box-shadow: 0px 0px 16px var(--accent);
+}
+
+.button.empty {
+  border: 1px solid var(--text-color);
+  background-color: transparent;
+}
+
+/* .button.empty::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+.button.empty:hover::before {
+  width: 100%;
+} */
+
+mark {
+  position: relative;
+  background-color: transparent;
+}
+mark:after {
+  border: .25em solid var(--accent);
+  border-top: none;
+  border-radius: 1.5em 1em 2em 1.5em;
+  bottom: -.3em;
+  content: '';
+  left: -.3em;
+  position: absolute;
+  right: -.3em;
+  top: -.1em;
+}
+mark:before {
+  border-top: .25em solid var(--accent);
+  border-radius: .5em;
+  content: '';
+  height: 1em;
+  left: 0;
+  position: absolute;
+  top: -.3em;
+  transform: rotate(-10deg);
+  width: 3em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.social-icon {
+  display: flex;
+  color: var(--text-color);
+  opacity: 0.6;
+  width: 32px;
+  aspect-ratio: 1;
+  font-size: 32px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+   opacity: 1; 
+   /* translate: 0 -4px;   */
+  }
+}
