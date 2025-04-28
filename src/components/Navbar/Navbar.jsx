@@ -10,7 +10,7 @@ import {
     FaTiktok
 } from "react-icons/fa6";
 import { IoLogoXing } from "react-icons/io";
-import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { useNavbar } from '../../hooks/NavbarContext';
 
 
 
@@ -18,8 +18,7 @@ const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false)
     const location = useLocation()
     const [curPage, setCurPage] = useState(window.location.pathname)
-    const { scrollY } = useScroll()
-    const [isDark, setIsDark] = useState(false)
+    const { isDark } = useNavbar()
 
     const handleMenu = () => {
         setOpenMenu(!openMenu)
@@ -33,19 +32,19 @@ const Navbar = () => {
         setCurPage(location.pathname)
     }, [location])
 
-    useMotionValueEvent(scrollY, 'change', (latest) => {
-        setIsDark(latest >= window.innerHeight)
-    })
-
     let date = new Date()
     let year = date.getFullYear()
 
     return (
         <header className='navbar'>
             <nav className='desktop'>
-                <Link className='logo' to='/'><IoLogoXing /></Link>
+                <Link 
+                    className={isDark ? 'logo dark' : 'logo'} 
+                    to='/'>
+                        <IoLogoXing />
+                </Link>
                 <div className='menu'>
-                    <ul>
+                    <ul className={isDark ? 'dark' : ''}>
                         <li className={curPage === '/' ? 'selected' : ''}>
                             <Link to='/'>HOME</Link>
                         </li>
@@ -65,10 +64,11 @@ const Navbar = () => {
                             <Link to='/about'>ABOUT</Link>
                         </li>
                     </ul>
-                    <Link className='button filled' to='/contact'>
-                        CONTACT
-                    </Link>
+                    
                 </div>
+                <Link className={isDark ? 'button empty dark' : 'button empty'} to='/contact'>
+                    CONTACT
+                </Link>
             </nav>
             <nav className='mobile'>
                 <Link 
@@ -77,29 +77,20 @@ const Navbar = () => {
                     onClick={closeMenu}>
                         <IoLogoXing />
                 </Link>
-                <div className='button-container'>
-                    {/* <Link 
-                        className={
-                            openMenu ? 'button filled selected' : 'button filled'
-                        } 
-                        to='/contact'>
-                        CONTACT
-                    </Link> */}
-                    <div className='hamburger-container'>
-                        <button 
-                            className={openMenu ? 'hamburger selected' : 'hamburger'} 
-                            onClick={handleMenu}>
-                            <div className={isDark ? 'top dark' : 'top'} />
-                            <div className={isDark ? 'middle dark' : 'middle'} />
-                            <div className={isDark ? 'bottom dark' : 'bottom'} />
-                        </button>
-                        <button 
-                            className={openMenu ? 'close selected' : 'close'} 
-                            onClick={handleMenu}>
-                            <div className='top'/>
-                            <div className='bottom'/>
-                        </button>
-                    </div>
+                <div className={isDark ? 'hamburger-container dark' : 'hamburger-container'}>
+                    <button 
+                        className={openMenu ? 'hamburger selected' : 'hamburger'} 
+                        onClick={handleMenu}>
+                        <div className='top' />
+                        <div className='middle' />
+                        <div className='bottom' />
+                    </button>
+                    <button 
+                        className={openMenu ? 'close selected' : 'close'} 
+                        onClick={handleMenu}>
+                        <div className='top'/>
+                        <div className='bottom'/>
+                    </button>
                 </div>
                 <div className={openMenu ? 'menu active' : 'menu'}>
                     <ul>

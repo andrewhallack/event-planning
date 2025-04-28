@@ -3,9 +3,10 @@ import img from '../../../assets/venue.jpg'
 
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import {  forwardRef, useRef } from "react"
 
-const Hero = () => {
+const Hero = forwardRef((props, ref) => {
+
   const imgRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: imgRef,
@@ -16,8 +17,8 @@ const Hero = () => {
 
   return (
     <>
-      <section className='hero' ref={imgRef}>
-        <div className='bg-img-wrapper'>
+      <section className='hero' ref={ref}>
+        <div className='bg-img-wrapper' ref={imgRef}>
           <div className='overlay' />
           <motion.img 
             style={{ y }}
@@ -33,6 +34,6 @@ const Hero = () => {
       </section>
     </>
   )
-}
+})
 
 export default Hero

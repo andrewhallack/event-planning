@@ -117,29 +117,14 @@ h1 {
 }
 
 .button.empty {
-  border: 1px solid var(--text-color);
+  border: 1px solid #1e1f13ee;
   background-color: transparent;
+  color: var(--text-color);
 }
 
-/* .button.empty::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--text-color);
-  color: var(--bg-color);
-  border-radius: 50px;
-  transition: 0.3s;
+.button.empty:hover {
+  
 }
-
-.button.empty:hover::before {
-  width: 100%;
-} */
 
 mark {
   position: relative;
