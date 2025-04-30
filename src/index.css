@@ -84,10 +84,16 @@ h3 {
 h2 {
   font-size: var(--step-5);
   letter-spacing: -5px;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond';
+  line-height: 1;
 }
 h1 {
   font-size: var(--step-6);
   letter-spacing: -3px;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond';
+  line-height: 1;
 }
 
 .button {
@@ -117,13 +123,13 @@ h1 {
 }
 
 .button.empty {
-  border: 1px solid #1e1f13ee;
+  border: 1px solid #1e1f13;
   background-color: transparent;
   color: var(--text-color);
 }
 
 .button.empty:hover {
-  
+  border: 1px solid var(--text-color)
 }
 
 mark {
@@ -170,5 +176,18 @@ a {
   &:hover {
    opacity: 1; 
    /* translate: 0 -4px;   */
+  }
+}
+
+.image-wrapper {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
   }
 }

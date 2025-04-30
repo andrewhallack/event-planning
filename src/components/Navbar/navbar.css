@@ -76,9 +76,17 @@
                 color: #f4f3f2;
                 font-weight: 400;
 
+                &:hover {
+                    border-color: var(--bg-color);
+                }
+
                 &.dark {
-                    border-color: #1e1f1399;
-                    color: #1e1f13;
+                    border-color: #1e1f1388;
+                    color: var(--text-color);
+
+                    &:hover {
+                        border-color: var(--text-color);
+                    }
                 }
             }
         }
@@ -285,6 +293,7 @@
         aspect-ratio: 1;
         color: var(--bg-color);
         font-size: var(--step-1);
+        font-family: 'Carmorant Garamond';
         line-height: 50px;
         cursor: pointer;
         font-weight: 400;
@@ -436,10 +445,6 @@
         top: calc(2 * var(--space-xs)); 
         padding: 0 calc(2 * var(--space-xs));
         height: 40px;
-
-        .logo {
-            height: 40px;
-        }
     }
 }
 

@@ -2,6 +2,7 @@ import './hero.css'
 import img from '../../../assets/venue.jpg'
 
 import { Link } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from "framer-motion"
 import {  forwardRef, useRef } from "react"
 
@@ -26,7 +27,7 @@ const Hero = forwardRef((props, ref) => {
         </div>
         <div className='content'>
             <div className='title'>
-                <h1>KHYARA</h1>
+                <h1>AUREA</h1>
                 <p>Quis sint esse non mollit ullamco.</p>
                 <Link to='/book' className="button filled">BOOK NOW</Link>
             </div>
