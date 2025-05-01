@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
 
 :root {
-  font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   --bg-color: #f4f3f2;
   --text-color: #1e1f13;
@@ -76,10 +76,16 @@ h5 {
 h4 {
   font-size: var(--step-3);
   letter-spacing: -2px;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond';
+  line-height: 1;
 }
 h3 {
   font-size: var(--step-4);
-  letter-spacing: -1px;
+  letter-spacing: -1px; 
+  font-weight: 500;
+  font-family: 'Cormorant Garamond';
+  line-height: 1;
 }
 h2 {
   font-size: var(--step-5);
@@ -96,98 +102,136 @@ h1 {
   line-height: 1;
 }
 
+a {
+  text-decoration: none;
+}
+
 .button {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: fit-content;
-  width: fit-content;
-  padding: var(--space-2xs) var(--space-m);
+  justify-content: space-evenly;
+  height: 60px;
+  width: 200px;
   border: transparent;
   cursor: pointer;
   font-family: inherit;
   font-size: var(--step-0);
   font-weight: 400;
-  border-radius: 8px;
+  border-radius: 50px;
+  padding: 0 var(--space-m);
   transition: 0.5s ease;
-}
-
-.button.filled {
-  background-color: var(--accent);
-  color: var(--text-color);
-}
-
-.button.filled:hover {
-  box-shadow: 0px 0px 16px var(--accent);
-}
-
-.button.empty {
-  border: 1px solid #1e1f13;
-  background-color: transparent;
-  color: var(--text-color);
-}
-
-.button.empty:hover {
-  border: 1px solid var(--text-color)
-}
-
-mark {
-  position: relative;
-  background-color: transparent;
-}
-mark:after {
-  border: .25em solid var(--accent);
-  border-top: none;
-  border-radius: 1.5em 1em 2em 1.5em;
-  bottom: -.3em;
-  content: '';
-  left: -.3em;
-  position: absolute;
-  right: -.3em;
-  top: -.1em;
-}
-mark:before {
-  border-top: .25em solid var(--accent);
-  border-radius: .5em;
-  content: '';
-  height: 1em;
-  left: 0;
-  position: absolute;
-  top: -.3em;
-  transform: rotate(-10deg);
-  width: 3em;
-}
-
-a {
-  text-decoration: none;
-}
-
-.social-icon {
-  display: flex;
-  color: var(--text-color);
-  opacity: 0.6;
-  width: 32px;
-  aspect-ratio: 1;
-  font-size: 32px;
-  transition: 0.3s;
-  cursor: pointer;
-
-  &:hover {
-   opacity: 1; 
-   /* translate: 0 -4px;   */
-  }
-}
-
-.image-wrapper {
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  img {
-    object-fit: cover;
+  text-wrap: nowrap;
+
+  &::before,
+  &::after {
+    content: '';
     width: 100%;
-    height: auto;
+    height: calc(50% - var(--step-0) / 2);
+    position: absolute;
+    z-index: 1;
+  }
+
+  &::before {
+    top: 0%;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  .text {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    height: var(--step-0);
+    line-height: var(--step-0);
+    transition: 0.3s;
+  }
+
+  .dot {
+    width: 9px;
+    aspect-ratio: 1;
+    border-radius: 50px;
+    transition: 0.3s ease;
+  }
+
+  .arrow-circle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-10px, -50%);
+    display: flex;
+    justify-content: flex-end;
+    width: 60px;
+    aspect-ratio: 1;
+    z-index: 2;
+    font-size: 32px;
+    color: var(--bg-color);
+    background-color: var(--text-color);
+    border-radius: 50%;
+    overflow: hidden;
+
+    .arrow-container {
+      display: flex;
+      width: 60px;
+      aspect-ratio: 1;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &.filled.light {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+
+    .dot {
+      border: 2px solid var(--text-color);
+      background-color: var(--bg-color);
+    }
+
+    &:hover .dot {
+      background-color: var(--text-color);
+    }
+
+    &::before,
+    &::after {
+      background-color: var(--bg-color);
+    }
+  }
+
+  &.filled.dark {
+    color: var(--bg-color);
+    background-color: var(--text-color);
+
+    .dot {
+      background-color: var(--bg-color);
+    }
+
+    .dot {
+      border: 2px solid var(--bg-color);
+      background-color: var(--text-color);
+    }
+
+    &:hover .dot {
+      background-color: var(--bg-color);
+    }
+
+    &::before,
+    &::after {
+      background-color: var(--text-color);
+    }
+  }
+
+  &.filled:hover {
+    .text {
+      transform: translateY(-100%);
+    }
+
+    .arrow-circle .arrow-container {
+      transform: translateX(100%);
+    }
   }
 }

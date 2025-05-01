@@ -22,7 +22,7 @@ const Home = () => {
     <>
       <div className='home'>
         <Hero ref={heroRef} />
-        <Intro />
+        {/* <Intro /> */}
       </div>
     </>
   )

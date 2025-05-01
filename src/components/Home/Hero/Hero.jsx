@@ -1,8 +1,8 @@
 import './hero.css'
-import img from '../../../assets/venue.jpg'
+import img from '../../../assets/hero.jpg'
 
 import { Link } from 'react-router-dom'
-// eslint-disable-next-line no-unused-vars
+import { TfiArrowRight } from "react-icons/tfi"
 import { motion, useScroll, useTransform } from "framer-motion"
 import {  forwardRef, useRef } from "react"
 
@@ -29,7 +29,17 @@ const Hero = forwardRef((props, ref) => {
             <div className='title'>
                 <h1>AUREA</h1>
                 <p>Quis sint esse non mollit ullamco.</p>
-                <Link to='/book' className="button filled">BOOK NOW</Link>
+                <Link to='/book' className="button filled light">
+                  <span className='text'>BOOK NOW<br />BOOK NOW</span>
+                  <span className='arrow-circle'>
+                    <span className='arrow-container'>
+                      <TfiArrowRight className='arrow' />
+                    </span>
+                    <span className='arrow-container'>
+                      <TfiArrowRight />
+                    </span>
+                  </span>
+                </Link>
             </div>
         </div>
       </section>

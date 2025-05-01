@@ -40,25 +40,23 @@ const Navbar = () => {
             <nav className='desktop'>
                 <Link 
                     className={isDark ? 'logo dark' : 'logo'} 
-                    to='/'>
-                        <IoLogoXing />
+                    to='/'
+                >
+                    <span>AUREA</span>
                 </Link>
                 <div className='menu'>
                     <ul className={isDark ? 'dark' : ''}>
                         <li className={curPage === '/' ? 'selected' : ''}>
                             <Link to='/'>HOME</Link>
                         </li>
-                        <li className={curPage === '/dinner-parties' ? 'selected' : ''}>
-                            <Link to='/dinner-parties'>DINNER PARTIES</Link>
+                        <li className={curPage === '/dinners' ? 'selected' : ''}>
+                            <Link to='/dinners'>DINNERS</Link>
                         </li>
                         <li className={curPage === '/proposals' ? 'selected' : ''}>
                             <Link to='/proposals'>PROPOSALS</Link>
                         </li>
-                        <li className={curPage === '/luxury-events' ? 'selected' : ''}>
-                            <Link to='/luxury-events'>LUXURY EVENTS</Link>
-                        </li>
-                        <li className={curPage === '/add-ons' ? 'selected' : ''}>
-                            <Link to='/add-ons'>ADD-ONS</Link>
+                        <li className={curPage === '/luxury' ? 'selected' : ''}>
+                            <Link to='/luxury'>LUXURY</Link>
                         </li>
                         <li className={curPage === '/about' ? 'selected' : ''}>
                             <Link to='/about'>ABOUT</Link>
@@ -66,8 +64,8 @@ const Navbar = () => {
                     </ul>
                     
                 </div>
-                <Link className={isDark ? 'button empty dark' : 'button empty'} to='/contact'>
-                    CONTACT
+                <Link className={isDark ? 'button filled dark' : 'button filled light'} to='/contact'>
+                    <span className='text'>CONTACT<br />CONTACT</span><span className='dot' />
                 </Link>
             </nav>
             <nav className='mobile'>
@@ -75,7 +73,7 @@ const Navbar = () => {
                     className={(isDark || openMenu) ? 'logo dark' : 'logo'}
                     to='/' 
                     onClick={closeMenu}>
-                        <IoLogoXing />
+                        <h4>AUREA</h4>
                 </Link>
                 <div className={isDark ? 'hamburger-container dark' : 'hamburger-container'}>
                     <button 
@@ -95,10 +93,9 @@ const Navbar = () => {
                 <div className={openMenu ? 'menu active' : 'menu'}>
                     <ul>
                         <li><Link to='/' onClick={handleMenu}>HOME</Link></li>
-                        <li><Link to='/dinner-parties' onClick={handleMenu}>DINNER PARTIES</Link></li>
+                        <li><Link to='/dinners' onClick={handleMenu}>DINNERS</Link></li>
                         <li><Link to='/proposals' onClick={handleMenu}>PROPOSALS</Link></li>
-                        <li><Link to='/luxury-events' onClick={handleMenu}>LUXURY EVENTS</Link></li>
-                        <li><Link to='/add-ons' onClick={handleMenu}>ADD-ONS</Link></li>
+                        <li><Link to='/luxury' onClick={handleMenu}>LUXURY</Link></li>
                         <li><Link to='/about' onClick={handleMenu}>ABOUT</Link></li>
                     </ul>
                     <div className={openMenu ? 'menu-bottom active' : 'menu-bottom'}>

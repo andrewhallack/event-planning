@@ -1,12 +1,12 @@
 .navbar {
     position: fixed;
-    top: calc(2 * var(--space-s));
-    right: 0;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     width: 100%;
-    height: 40px;
-    padding: 0 calc(2 * var(--space-s));
+    height: 100px;
+    padding: calc(2 * var(--space-s));
     background-color: transparent;
     box-sizing: border-box;
     z-index: 999;
@@ -21,15 +21,13 @@
         &.desktop {
             .menu {
                 display: flex;
-                height: 100%;
-                column-gap: var(--space-m);
-                align-items: center;
-                border-radius: 12px;
-                padding: 0 var(--space-m);
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
+                height: 100%;
+                column-gap: var(--space-l);
+                align-items: center;
             
                 ul {
                     display: flex;
@@ -41,17 +39,25 @@
                     li {
                         position: relative;
                         display: block;
-                        font-size: var(--step-0);
+                        font-size: 16px;
                         font-weight: 400;
-                        margin-right: var(--space-m);
+                        margin-right: var(--space-l);
+                        padding: 2px 0;
                         transition: 0.3s ease;
                         opacity: 0.6;
                         text-wrap: nowrap;
 
-                        &.selected,
+                        &.selected {
+                            opacity: 0.9;
+                        }
+
                         &:hover {
-                            opacity: 1;
-                            text-shadow: 0 0 24px var(--bg-color);
+                            opacity: 0.9;
+
+                            &::before,
+                            &::after {
+                                transform: translateX(8px);
+                            }
                         }
 
                         &:last-child {
@@ -289,18 +295,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 40px;
-        aspect-ratio: 1;
+        height: 100%;
         color: var(--bg-color);
-        font-size: var(--step-1);
+        font-size: 40px;
         font-family: 'Carmorant Garamond';
-        line-height: 50px;
         cursor: pointer;
         font-weight: 400;
-        border-radius: 50px;
         transition: 0.3s ease;
-        /* background-color: #f4f3f2ee;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+
+        span {
+            font-family: 'Carmorant Garamond';
+        }
 
         &.dark {
             color: var(--text-color);

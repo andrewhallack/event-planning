@@ -6,18 +6,24 @@
     width: 100%;
     height: 100svh;
     box-sizing: border-box;
-    padding: var(--space-s);
     z-index: 2;
 
     .bg-img-wrapper {
         position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 0;
+        /* position: absolute;
         width: calc(100% - 2 * var(--space-s));
         height: calc(100% - 2 * var(--space-s));
         top: var(--space-s);
         left: var(--space-s);
         border-radius: 20px;
         overflow: hidden;
-        z-index: 0;
+        z-index: 0; */
 
         .overlay {
             position: absolute;
@@ -42,9 +48,10 @@
         position: relative;
         display: flex;
         flex-direction: column;
+        height: 100%;
         align-items: center;
+        justify-content: center;
         padding: var(--space-s);
-        transform: translateY(100px);
 
         .title {
             display: flex;
@@ -72,7 +79,13 @@
     }
 
     .button {
-        padding: var(--space-s) var(--space-xl);
+        position: absolute;
+        width: 60%;
+        max-width: 1000px;
+        height: 80px;
+        left: 50%;
+        bottom: 0px;
+        transform: translate(-50%, -100%);
     }
 
     .home-icons {
@@ -92,10 +105,14 @@
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1300px) {
     .hero .content .title h1 {
         width: calc(100% - 80px);
         letter-spacing: 80px;
+    }
+
+    .hero .button {
+        max-width: 800px;
     }
 }
 
@@ -108,16 +125,20 @@
             letter-spacing: 40px;
         }
 
-        .bg-img-wrapper {
+        /* .bg-img-wrapper {
             top: var(--space-xs);
             left: var(--space-xs);
             width: calc(100% - 2 * var(--space-xs));
             height: calc(100% - 2 * var(--space-xs));
+        } */
+
+        .button {
+            max-width: 600px;
         }
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .hero {
         .content {
             justify-content: center;
@@ -134,11 +155,13 @@
                 p {
                     margin-bottom: var(--space-l);
                 }
-
-                .button {
-                    margin-bottom: 0;
-                }
             }
+        }
+
+        .button {
+            width: 90%;
+            max-width: 400px;
+            transform: translate(-50%, -50%);
         }
     }
 }
