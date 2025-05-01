@@ -6,10 +6,15 @@
     align-items: center;
     width: 100%;
     height: 100px;
-    padding: calc(2 * var(--space-s));
     background-color: transparent;
     box-sizing: border-box;
     z-index: 999;
+    transition: background-color 0.5s ease,
+                transform 0.3s ease;
+
+    &.disappear {
+        transform: translateY(-100px);
+    }
 
     nav {
         width: 100%;
@@ -17,8 +22,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: calc(2 * var(--space-s));
 
         &.desktop {
+            &.dark {
+                background-color: var(--bg-color);
+                box-shadow: rgba(149, 157, 165, 0.2) 0px -4px 12px;
+            }
+
             .menu {
                 display: flex;
                 position: absolute;
@@ -48,7 +59,7 @@
                         text-wrap: nowrap;
 
                         &.selected {
-                            opacity: 0.9;
+                            opacity: 1;
                         }
 
                         &:hover {
@@ -104,8 +115,9 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                align-items: c;
                 position: absolute;
-                top: calc(-2 * var(--space-xs));
+                top: 0;
                 right: 0;
                 width: 100%;
                 height: 100vh;
@@ -120,7 +132,7 @@
                 transition: opacity 0.3s ease, visibility 0.3s ease;
                 padding: 80px var(--space-m);
 
-                &::before {
+                /* &::before {
                     content: '';
                     position: absolute;
                     width: inherit;
@@ -130,7 +142,7 @@
                     z-index: 0;
                     opacity: 0.3;
                     background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/paper-pattern.png");
-                }
+                } */
 
                 &.active {
                     opacity: 1;
@@ -206,6 +218,8 @@
                 }
 
                 ul {
+                    margin-top: var(--space-l);
+
                     li {
                         position: relative;
                         display: flex;
@@ -232,7 +246,7 @@
                             background-color: var(--bg-color);
                         }
 
-                        &::after {
+                        /* &::after {
                             content: '';
                             position: absolute;
                             top: 0;
@@ -241,12 +255,13 @@
                             height: 100%;
                             background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/paper-pattern.png");
                             opacity: 0.3;
-                        }
+                        } */
                     }
                 }
 
                 .menu-bottom {
                     display: flex;
+                    align-items: center;
                     flex-direction: column;
                     opacity: 0;
                     transform: translate(0, 10px);
@@ -263,13 +278,21 @@
 
                         a {
                             margin-right: var(--space-s);
+
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .social-icon {
+                            font-size: var(--step-3);
                         }
                     }
 
                     .button.filled {
                         width: 100%;
                         padding: var(--space-m);
-                        margin-bottom: var(--space-2xs);
+                        margin-bottom: var(--space-s);
                     }
 
                     .copyright {
@@ -277,16 +300,6 @@
                         opacity: 0.6;
                     }
                 }
-            }
-        }
-
-        @media screen and (max-width: 1300px) {
-            &.desktop {
-                display: none;
-            }
-
-            &.mobile {
-                display: flex;
             }
         }
     }
@@ -443,13 +456,34 @@
             }
         }
     }
+
+    @media screen and (max-width: 1300px) {
+        nav.desktop {
+            display: none;
+        }
+
+        nav.mobile {
+            display: flex;
+        }
+
+        &.disappear {
+            transform: translateY(0);
+        }
+    }
 }
 
 @media screen and (max-width: 1000px) {
     .navbar {
-        top: calc(2 * var(--space-xs)); 
-        padding: 0 calc(2 * var(--space-xs));
-        height: 40px;
+        top: 0; 
+        height: 80px;
+
+        nav.mobile {
+            padding: 0 calc(2 * var(--space-xs));
+
+            .menu {
+                top: calc(-2 * var(--space-s));
+            }
+        }
     }
 }
 

@@ -85,7 +85,7 @@
         height: 80px;
         left: 50%;
         bottom: 0px;
-        transform: translate(-50%, -100%);
+        transform: translate(-50%, -50%);
     }
 
     .home-icons {

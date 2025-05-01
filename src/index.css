@@ -131,6 +131,7 @@ a {
     height: calc(50% - var(--step-0) / 2);
     position: absolute;
     z-index: 1;
+    transition: 0.5s ease;
   }
 
   &::before {
@@ -147,7 +148,7 @@ a {
     align-items: flex-start;
     height: var(--step-0);
     line-height: var(--step-0);
-    transition: 0.3s;
+    transition: 0.5s;
   }
 
   .dot {
@@ -164,7 +165,7 @@ a {
     transform: translate(-10px, -50%);
     display: flex;
     justify-content: flex-end;
-    width: 60px;
+    height: 75%;
     aspect-ratio: 1;
     z-index: 2;
     font-size: 32px;
@@ -175,11 +176,11 @@ a {
 
     .arrow-container {
       display: flex;
-      width: 60px;
+      height: 100%;
       aspect-ratio: 1;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.5s ease;
     }
   }
 

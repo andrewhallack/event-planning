@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from "react-router-dom";
 
 import './navbar.css'
@@ -10,15 +10,35 @@ import {
     FaTiktok
 } from "react-icons/fa6";
 import { IoLogoXing } from "react-icons/io";
-import { useNavbar } from '../../hooks/NavbarContext';
-
+import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false)
     const location = useLocation()
     const [curPage, setCurPage] = useState(window.location.pathname)
-    const { isDark } = useNavbar()
+    const [isDark, setIsDark] = useState(false)
+    const [disappear, setDisappear] = useState(false)
+    const lastScrollY = useRef(0)
+
+    const { scrollYProgress } = useScroll()
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        if (latest >= 0.9) {
+            setIsDark(true)
+        } else {
+            setIsDark(false)
+        }
+
+        const delta = latest - lastScrollY.current
+
+        if (delta > 0 && latest > 0.4) {
+            setDisappear(true)
+        } else if (delta < 0) {
+            setDisappear(false)
+        }
+        lastScrollY.current = latest
+    })
 
     const handleMenu = () => {
         setOpenMenu(!openMenu)
@@ -36,8 +56,8 @@ const Navbar = () => {
     let year = date.getFullYear()
 
     return (
-        <header className='navbar'>
-            <nav className='desktop'>
+        <header className={disappear ? 'navbar disappear' : 'navbar'}>
+            <nav className={isDark ? 'desktop dark' : 'desktop'}>
                 <Link 
                     className={isDark ? 'logo dark' : 'logo'} 
                     to='/'
@@ -99,13 +119,13 @@ const Navbar = () => {
                         <li><Link to='/about' onClick={handleMenu}>ABOUT</Link></li>
                     </ul>
                     <div className={openMenu ? 'menu-bottom active' : 'menu-bottom'}>
-                        <div className='socials'>
+                        {/* <div className='socials'>
                             <a className='social-icon'><FaFacebook /></a>
                             <a className='social-icon'><FaInstagram /></a>
                             <a className='social-icon'><FaYoutube /></a>
                             <a className='social-icon'><FaTiktok /></a>
-                        </div>
-                        <Link to='/contact' onClick={handleMenu} className='button filled bottom'>CONTACT</Link>
+                        </div> */}
+                        <Link to='/contact' onClick={handleMenu} className='button filled dark'>CONTACT</Link>
                         <span className='copyright'>&#169;{year} KHYARA event planning</span>
                     </div>
                 </div>

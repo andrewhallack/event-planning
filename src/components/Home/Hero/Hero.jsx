@@ -2,7 +2,7 @@ import './hero.css'
 import img from '../../../assets/hero.jpg'
 
 import { Link } from 'react-router-dom'
-import { TfiArrowRight } from "react-icons/tfi"
+import { GoCalendar } from "react-icons/go";
 import { motion, useScroll, useTransform } from "framer-motion"
 import {  forwardRef, useRef } from "react"
 
@@ -33,10 +33,10 @@ const Hero = forwardRef((props, ref) => {
                   <span className='text'>BOOK NOW<br />BOOK NOW</span>
                   <span className='arrow-circle'>
                     <span className='arrow-container'>
-                      <TfiArrowRight className='arrow' />
+                      <GoCalendar style={{ fontSize: 24 }} />
                     </span>
                     <span className='arrow-container'>
-                      <TfiArrowRight />
+                      <GoCalendar style={{ fontSize: 24 }} />
                     </span>
                   </span>
                 </Link>
