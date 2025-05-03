@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
 
 :root {
-  font-family: 'Nunito Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Darker Grotesque", sans-serif;
 
-  --bg-color: #f4f3f2;
-  --text-color: #1e1f13;
+  --light: #f4f3f2;
+  --dark: #222;
   --primary-color: #F6E9E4;
   --accent: #D9B8A6;
 
@@ -49,7 +49,7 @@
 
 body {
   position: relative;
-  color: var(--text-color);
+  color: var(--light);
 }
 
 * {
@@ -72,10 +72,13 @@ h6 {
 h5 {
   font-size: var(--step-2);
   letter-spacing: -1px;
+  font-weight: 500;
+  font-family: 'Cormorant Garamond';
+  line-height: 1;
 }
 h4 {
   font-size: var(--step-3);
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   font-weight: 500;
   font-family: 'Cormorant Garamond';
   line-height: 1;
@@ -107,132 +110,70 @@ a {
 }
 
 .button {
-  position: relative;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  border: 1px solid #f4f3f2aa;
+  width: 160px;
   height: 60px;
-  width: 200px;
-  border: transparent;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: var(--step-0);
-  font-weight: 400;
-  border-radius: 50px;
-  padding: 0 var(--space-m);
+  border-radius: 30px;
+  padding: var(--space-xs);
   transition: 0.5s ease;
-  overflow: hidden;
-  text-wrap: nowrap;
-
-  &::before,
-  &::after {
-    content: '';
-    width: 100%;
-    height: calc(50% - var(--step-0) / 2);
-    position: absolute;
-    z-index: 1;
-    transition: 0.5s ease;
-  }
-
-  &::before {
-    top: 0%;
-  }
-
-  &::after {
-    bottom: 0;
-  }
-
-  .text {
-    position: relative;
+  cursor: pointer;
+  
+  .button-content-wrapper {
     display: flex;
-    align-items: flex-start;
-    height: var(--step-0);
-    line-height: var(--step-0);
-    transition: 0.5s;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    height: var(--step-1);
+
+    .button-content {
+      color: var(--light);
+      font-size: var(--step-1);
+      line-height: 1;
+      transition: 0.5s ease;
+    }
   }
 
-  .dot {
-    width: 9px;
-    aspect-ratio: 1;
-    border-radius: 50px;
-    transition: 0.3s ease;
-  }
-
-  .arrow-circle {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-10px, -50%);
+  .button-icon-wrapper {
     display: flex;
     justify-content: flex-end;
-    height: 75%;
-    aspect-ratio: 1;
-    z-index: 2;
-    font-size: 32px;
-    color: var(--bg-color);
-    background-color: var(--text-color);
-    border-radius: 50%;
     overflow: hidden;
+    width: 24px;
+    rotate: -45deg;
 
-    .arrow-container {
-      display: flex;
-      height: 100%;
-      aspect-ratio: 1;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.5s ease;
+    .button-icon {
+      color: var(--light);
+      font-size: 24px;
+      line-height: 24px;
+      width: 24px;
+      transition: 0.5s ease;
     }
   }
+  
+  &:hover {
+    border-color: var(--light);
 
-  &.filled.light {
-    color: var(--text-color);
-    background-color: var(--bg-color);
-
-    .dot {
-      border: 2px solid var(--text-color);
-      background-color: var(--bg-color);
-    }
-
-    &:hover .dot {
-      background-color: var(--text-color);
-    }
-
-    &::before,
-    &::after {
-      background-color: var(--bg-color);
-    }
-  }
-
-  &.filled.dark {
-    color: var(--bg-color);
-    background-color: var(--text-color);
-
-    .dot {
-      background-color: var(--bg-color);
-    }
-
-    .dot {
-      border: 2px solid var(--bg-color);
-      background-color: var(--text-color);
-    }
-
-    &:hover .dot {
-      background-color: var(--bg-color);
-    }
-
-    &::before,
-    &::after {
-      background-color: var(--text-color);
-    }
-  }
-
-  &.filled:hover {
-    .text {
+    .button-content-wrapper .button-content {
       transform: translateY(-100%);
     }
 
-    .arrow-circle .arrow-container {
+    .button-icon-wrapper .button-icon {
       transform: translateX(100%);
     }
+  }
+}
+
+.social-icon {
+  font-size: var(--step-2);
+  color: var(--light);
+  opacity: 0.8;
+  transition: 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 1;
   }
 }

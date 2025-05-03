@@ -9,7 +9,7 @@ import {
     FaYoutube,
     FaTiktok
 } from "react-icons/fa6";
-import { IoLogoXing } from "react-icons/io";
+import { TfiArrowRight } from "react-icons/tfi";
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 
@@ -21,10 +21,12 @@ const Navbar = () => {
     const [disappear, setDisappear] = useState(false)
     const lastScrollY = useRef(0)
 
-    const { scrollYProgress } = useScroll()
+    const { scrollY } = useScroll()
 
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        if (latest >= 0.9) {
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        const threshold = window.innerHeight
+
+        if (latest >= threshold) {
             setIsDark(true)
         } else {
             setIsDark(false)
@@ -32,7 +34,7 @@ const Navbar = () => {
 
         const delta = latest - lastScrollY.current
 
-        if (delta > 0 && latest > 0.4) {
+        if (delta > 0 && latest > threshold / 2) {
             setDisappear(true)
         } else if (delta < 0) {
             setDisappear(false)
@@ -84,8 +86,17 @@ const Navbar = () => {
                     </ul>
                     
                 </div>
-                <Link className={isDark ? 'button filled dark' : 'button filled light'} to='/contact'>
-                    <span className='text'>CONTACT<br />CONTACT</span><span className='dot' />
+                <Link className={isDark ? 'button filled dark' : 'button filled light'} to='/book'>
+                    <span className='text'>BOOK NOW<br />BOOK NOW</span>
+                        <span className='arrow-circle'>
+                            <span className='arrow-container'>
+                                <TfiArrowRight />
+                            </span>
+                            <span className='arrow-container'>
+                                <TfiArrowRight />
+                            </span>
+                        </span>
+                    {/* <span className='dot' /> */}
                 </Link>
             </nav>
             <nav className='mobile'>
@@ -125,7 +136,17 @@ const Navbar = () => {
                             <a className='social-icon'><FaYoutube /></a>
                             <a className='social-icon'><FaTiktok /></a>
                         </div> */}
-                        <Link to='/contact' onClick={handleMenu} className='button filled dark'>CONTACT</Link>
+                        <Link to='/contact' onClick={handleMenu} className='button filled dark'>
+                        <span className='text'>BOOK NOW<br />BOOK NOW</span>
+                        <span className='arrow-circle'>
+                            <span className='arrow-container'>
+                                <TfiArrowRight />
+                            </span>
+                            <span className='arrow-container'>
+                                <TfiArrowRight />
+                            </span>
+                        </span>
+                        </Link>
                         <span className='copyright'>&#169;{year} KHYARA event planning</span>
                     </div>
                 </div>

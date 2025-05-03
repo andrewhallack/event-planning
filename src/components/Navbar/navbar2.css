@@ -1,0 +1,248 @@
+.header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    z-index: 999;
+
+    &.desktop,
+    &.mobile {
+        .navbar2 {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: calc(2 * var(--space-s));
+
+            .logo {
+                color: var(--light);
+            }
+        }
+
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            list-style: none;
+
+            li {                    
+                a {
+                    color: var(--light);
+                    opacity: 0.8;
+                    font-size: var(--step-1);
+                    transition: 0.3s ease;
+                }
+
+                &:hover {
+                    a {
+                        opacity: 1;
+                        text-shadow: 0 0 24px var(--light);
+                    }
+                }
+            }
+        }
+    }
+
+    &.desktop {
+        display: block;
+
+        .navbar2 {
+            .logo {
+                height: 48px;
+
+                h5 {
+                    font-size: 48px;
+                }
+            }
+
+            .menu {
+                align-items: center;
+                justify-content: space-between;
+                column-gap: var(--space-l);
+
+                li {                    
+                    a {
+                        color: var(--light);
+                        opacity: 0.8;
+                        font-size: var(--step-1);
+                        transition: 0.3s ease;
+                    }
+
+                    &:hover {
+                        a {
+                            opacity: 1;
+                            text-shadow: 0 0 24px var(--light);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.mobile {
+        display: none;
+
+        .navbar2 {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            .logo {
+                height: 25px;
+
+                h5 {
+                    font-size: var(--step-2);
+                }
+            }
+
+            .hamburger-container {
+                position: relative;
+                display: flex;
+                width: 25px;
+                aspect-ratio: 1;
+                background-color: transparent;
+                border: transparent;
+                
+                .hamburger {
+                    position: absolute;
+                    width: 25px;
+                    height: 25px;
+                    border: transparent;
+                    background-color: transparent;
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 2px;
+                    justify-content: center;
+                    cursor: pointer;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+        
+                    .top, .middle, .bottom {
+                        height: 4px;
+                        background-color: var(--light);
+                        transform: scaleX(1);
+                        transform-origin: left;
+                        transition: transform 0.5s ease-in-out, 
+                                    opacity 0.5s ease-in-out;
+                    }
+                    
+                    .top {
+                        width: 21px;
+                        transition-delay: 0.5s;
+                    }
+        
+                    .middle {
+                        width: 25px;
+                        transition-delay: 0.6s;
+                    }
+        
+                    .bottom {
+                        width: 18px;
+                        transition-delay: 0.7s;
+                    }
+        
+                    &.selected {
+                        .top, .middle, .bottom {
+                            transform: scaleX(0);
+                            opacity: 0;
+                        }
+        
+                        .top {
+                            transition-delay: 0s;
+                        }
+            
+                        .middle {
+                            transition-delay: 0.1s;
+                        }
+            
+                        .bottom {
+                            transition-delay: 0.2s;
+                        }
+                    }
+                }
+
+                .close {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border: transparent;
+                    background-color: transparent;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+        
+                    .top, .bottom {
+                        position: absolute;
+                        width: 25px;
+                        height: 4px;
+                        transition: 0.5s ease-in-out;
+        
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 0;
+                            height: 100%;
+                            background-color: var(--light);
+                            transition: 0.5s;
+                        }
+                    }
+        
+                    .top {
+                        rotate: 45deg;
+                    }
+        
+                    .bottom {
+                        rotate: -45deg;
+        
+                        &::before {
+                            transition-delay: 0.1s;
+                        }
+                    }
+        
+                    &.selected {
+                        .top, .bottom {
+                            opacity: 1;
+                            width: 25px;
+        
+                            &::before {
+                                width: 100%;
+                            }
+                        }
+        
+                        .top::before {
+                            transition-delay: 0.5s;
+                        }
+        
+                        .bottom::before {
+                            transition-delay: 0.6s;
+                        }
+                    }
+                }
+            }
+
+            .menu {
+                opacity: 0;
+
+                &.selected {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1100px) {
+        &.desktop {
+            display: none;
+        }
+
+        &.mobile {
+            display: flex;
+        }
+    }
+}
