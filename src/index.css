@@ -166,8 +166,52 @@ a {
   }
 }
 
+.button2 {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  transition: 0.5s ease;
+  cursor: pointer;
+
+  .button-content-wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: var(--space-m);
+    
+    .button-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-s);
+      overflow: hidden;
+      aspect-ratio: 1;
+      border: 1px solid var(--light);
+      border-radius: 50%;
+      rotate: -45deg;
+  
+      .button-icon {
+        color: var(--light);
+        font-size: var(--step-1);
+        height: 100%;
+        width: 100%;
+        transition: 0.5s ease;
+      }
+    }
+
+    .button-content {
+      color: var(--light);
+      font-size: var(--step-2);
+      line-height: 1;
+      transition: 0.5s ease;
+      text-decoration: underline;
+    }
+  }
+}
+
 .social-icon {
-  font-size: var(--step-2);
+  font-size: 32px;
   color: var(--light);
   opacity: 0.8;
   transition: 0.3s ease;
@@ -175,5 +219,9 @@ a {
   
   &:hover {
     opacity: 1;
+  }
+
+  @media screen and (max-width: 1100px) {
+    font-size: 24px;
   }
 }

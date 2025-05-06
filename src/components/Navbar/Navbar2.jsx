@@ -40,17 +40,17 @@ const Navbar2 = () => {
                     </ul>
                     <Link to='/book' className='button'>
                         <span className='button-content-wrapper'>
-                            <span className='button-content'>Book</span>
-                            <span className='button-content'>Book</span>
+                            <span className='button-content'>BOOK</span>
+                            <span className='button-content'>BOOK</span>
                         </span>
-                        <span className='button-icon-wrapper'>
+                        {/* <span className='button-icon-wrapper'>
                             <span className='button-icon'>
                                 <TfiArrowRight />
                             </span>
                             <span className='button-icon'>
                                 <TfiArrowRight />
                             </span>                            
-                        </span>
+                        </span> */}
                     </Link>
                 </nav>
             </header>

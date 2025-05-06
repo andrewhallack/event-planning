@@ -44,7 +44,7 @@
             .socials {
                 display: flex;
                 align-items: center;
-                column-gap: var(--space-l);
+                column-gap: var(--space-m);
             }
 
             .contact {
@@ -70,7 +70,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        translate: 0 50%;
 
         h1 {
             letter-spacing: var(--space-2xl);
@@ -80,7 +79,7 @@
         
         p {
             text-align: center;
-            font-size: var(--step-1);
+            font-size: var(--step-2);
         }
     }
 
