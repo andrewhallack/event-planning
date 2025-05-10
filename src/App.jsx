@@ -11,7 +11,7 @@ import { ReactLenis } from 'lenis/react'
 function App() {
   
   return (
-    <ReactLenis root options={{ lerp: 0.15, easing: t => t }}>
+    <ReactLenis root options={{ lerp: 0.1, easing: t => t }}>
       <Router>
         <Navbar2 />
         <Routes>

@@ -1,5 +1,5 @@
 import './hero.css'
-import img from '../../../assets/venue.jpg'
+import img from '../../../assets/hero.jpg'
 
 import { Link } from 'react-router-dom'
 import { TfiArrowRight } from "react-icons/tfi";
@@ -15,20 +15,20 @@ import {
 
 const Hero = forwardRef((props, ref) => {
 
-  // const imgRef = useRef(null)
-  // const { scrollYProgress } = useScroll({
-  //   target: imgRef,
-  //   offset: ['start end', 'end start']
-  // })
+  const imgRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: imgRef,
+    offset: ['start end', 'end start']
+  })
 
-  // const y = useTransform(scrollYProgress, [0, 1], ['-30%', '30%'])
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300])
 
   return (
-    <section className='hero'>
-      <div className="hero-image-wrapper">
+    <section className='hero' ref={imgRef}>
+      <div className="hero-image-wrapper" >
         <motion.img 
           src={img} 
-          // style={{ y }}
+          style={{ y }}
         />
         <div className="overlay" />
         <div className='bottom'>
