@@ -4,9 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 
-import { NavbarProvider } from './hooks/NavbarContext'
-
-import Navbar from "./components/Navbar/Navbar"
+import Navbar2 from "./components/Navbar2/Navbar2"
 import Home from './components/Home/Home'
 import { ReactLenis } from 'lenis/react'
 
@@ -15,12 +13,10 @@ function App() {
   return (
     <ReactLenis root options={{ lerp: 0.2, easing: t => t }}>
       <Router>
-        <NavbarProvider> 
-          <Navbar />
-          <Routes>
-            <Route exact path='/' element=<Home /> />
-          </Routes>
-        </NavbarProvider>
+        <Navbar2 />
+        <Routes>
+          <Route exact path='/' element=<Home /> />
+        </Routes>
       </Router>
     </ReactLenis>
   )

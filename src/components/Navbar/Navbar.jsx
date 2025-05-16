@@ -10,7 +10,6 @@ import {
     FaTiktok
 } from "react-icons/fa6";
 import { IoLogoXing } from "react-icons/io";
-import { useNavbar } from '../../hooks/NavbarContext';
 
 
 
@@ -18,7 +17,6 @@ const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false)
     const location = useLocation()
     const [curPage, setCurPage] = useState(window.location.pathname)
-    const { isDark } = useNavbar()
 
     const handleMenu = () => {
         setOpenMenu(!openMenu)
