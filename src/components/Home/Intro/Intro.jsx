@@ -2,7 +2,6 @@ import './intro.css'
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import img from '../../../assets/table.jpg'
 
 const Intro = () => {
   const introRef = useRef(null)
@@ -24,47 +23,7 @@ const Intro = () => {
 
   return (
     <section className='intro' ref={introRef}>
-      <div className='content'>
-        <div className='left'>
-          <div className='image-wrapper'>
-            <img src={img} />
-          </div>
-        </div>
-        <div className='right'>
-          <h2>THIS IS A TITLE</h2>
-          <p>{text}</p>
-        </div>
-      </div>
-
-    {/* <h3>
-        {(() => {
-          let globalIndex = 0
-          let start = 0
-          let end = 0
-
-          return text.split(' ').map((word, wordIndex) => (
-            <span key={wordIndex}>
-              {word.split('').map((letter, letterIndex) => {
-                const spread = 0.2
-                start = (globalIndex / text.length) * (1 - spread)
-                end = (start + spread)
-
-                const element = (
-                  <Letter key={`${wordIndex}-${letterIndex}`} range={[start, end]} progress={scrollYProgress}>
-                    {letter}
-                  </Letter>
-                )
-
-                globalIndex++
-                return element
-              })}
-              <Letter key={globalIndex} range={[start, end]} progress={scrollYProgress}>
-                {'\u00A0'}
-              </Letter>
-            </span>
-          ))
-        })()}
-      </h3> */}
+      <p>{text}</p>
     </section>
   )
 }

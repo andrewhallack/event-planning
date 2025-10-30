@@ -4,14 +4,14 @@ import {
   Route
 } from 'react-router-dom'
 
-import Navbar2 from "./components/Navbar2/Navbar2"
+import Navbar2 from "./components/Navbar/Navbar"
 import Home from './components/Home/Home'
 import { ReactLenis } from 'lenis/react'
 
 function App() {
   
   return (
-    <ReactLenis root options={{ lerp: 0.2, easing: t => t }}>
+    <ReactLenis root options={{ lerp: 0.1, easing: t => t }}>
       <Router>
         <Navbar2 />
         <Routes>

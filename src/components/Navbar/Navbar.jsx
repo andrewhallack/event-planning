@@ -1,118 +1,62 @@
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from "react-router-dom";
+import { RiShoppingBagLine } from "react-icons/ri"
 
+import { links } from './links'
 import './navbar.css'
-
-import { 
-    FaFacebook,
-    FaInstagram,
-    FaYoutube,
-    FaTiktok
-} from "react-icons/fa6";
-import { IoLogoXing } from "react-icons/io";
-
 
 
 const Navbar = () => {
-    const [openMenu, setOpenMenu] = useState(false)
-    const location = useLocation()
-    const [curPage, setCurPage] = useState(window.location.pathname)
+  const location = useLocation()
+  const [curPage, setCurPage] = useState(window.location.pathname)
+  const [activeMenu, setActiveMenu] = useState(false)
+  const [activeBooking, setActiveBooking] = useState(false)
 
-    const handleMenu = () => {
-        setOpenMenu(!openMenu)
-    }
+  useEffect(() => {
+      setCurPage(location.pathname)
+  }, [location])
 
-    const closeMenu = () => {
-        setOpenMenu(false)
-    }
+  const toggleMenu = () => {
+    setActiveMenu(!activeMenu)
+  }
+  
+  const toggleBooking = () => {
+    setActiveBooking(!activeBooking)
+  }
 
-    useEffect(() => {
-        setCurPage(location.pathname)
-    }, [location])
-
-    let date = new Date()
-    let year = date.getFullYear()
-
-    return (
-        <header className='navbar'>
-            <nav className='desktop'>
-                <Link 
-                    className={isDark ? 'logo dark' : 'logo'} 
-                    to='/'>
-                        <IoLogoXing />
-                </Link>
-                <div className='menu'>
-                    <ul className={isDark ? 'dark' : ''}>
-                        <li className={curPage === '/' ? 'selected' : ''}>
-                            <Link to='/'>HOME</Link>
-                        </li>
-                        <li className={curPage === '/dinner-parties' ? 'selected' : ''}>
-                            <Link to='/dinner-parties'>DINNER PARTIES</Link>
-                        </li>
-                        <li className={curPage === '/proposals' ? 'selected' : ''}>
-                            <Link to='/proposals'>PROPOSALS</Link>
-                        </li>
-                        <li className={curPage === '/luxury-events' ? 'selected' : ''}>
-                            <Link to='/luxury-events'>LUXURY EVENTS</Link>
-                        </li>
-                        <li className={curPage === '/add-ons' ? 'selected' : ''}>
-                            <Link to='/add-ons'>ADD-ONS</Link>
-                        </li>
-                        <li className={curPage === '/about' ? 'selected' : ''}>
-                            <Link to='/about'>ABOUT</Link>
-                        </li>
-                    </ul>
-                    
-                </div>
-                <Link className={isDark ? 'button empty dark' : 'button empty'} to='/contact'>
-                    CONTACT
-                </Link>
-            </nav>
-            <nav className='mobile'>
-                <Link 
-                    className={(isDark || openMenu) ? 'logo dark' : 'logo'}
-                    to='/' 
-                    onClick={closeMenu}>
-                        <IoLogoXing />
-                </Link>
-                <div className={isDark ? 'hamburger-container dark' : 'hamburger-container'}>
-                    <button 
-                        className={openMenu ? 'hamburger selected' : 'hamburger'} 
-                        onClick={handleMenu}>
-                        <div className='top' />
-                        <div className='middle' />
-                        <div className='bottom' />
-                    </button>
-                    <button 
-                        className={openMenu ? 'close selected' : 'close'} 
-                        onClick={handleMenu}>
-                        <div className='top'/>
-                        <div className='bottom'/>
-                    </button>
-                </div>
-                <div className={openMenu ? 'menu active' : 'menu'}>
-                    <ul>
-                        <li><Link to='/' onClick={handleMenu}>HOME</Link></li>
-                        <li><Link to='/dinner-parties' onClick={handleMenu}>DINNER PARTIES</Link></li>
-                        <li><Link to='/proposals' onClick={handleMenu}>PROPOSALS</Link></li>
-                        <li><Link to='/luxury-events' onClick={handleMenu}>LUXURY EVENTS</Link></li>
-                        <li><Link to='/add-ons' onClick={handleMenu}>ADD-ONS</Link></li>
-                        <li><Link to='/about' onClick={handleMenu}>ABOUT</Link></li>
-                    </ul>
-                    <div className={openMenu ? 'menu-bottom active' : 'menu-bottom'}>
-                        <div className='socials'>
-                            <a className='social-icon'><FaFacebook /></a>
-                            <a className='social-icon'><FaInstagram /></a>
-                            <a className='social-icon'><FaYoutube /></a>
-                            <a className='social-icon'><FaTiktok /></a>
-                        </div>
-                        <Link to='/contact' onClick={handleMenu} className='button filled bottom'>CONTACT</Link>
-                        <span className='copyright'>&#169;{year} KHYARA event planning</span>
-                    </div>
-                </div>
-            </nav>
-        </header>
-    )
+  return (
+    <header className='navbar'>
+      <nav className='nav'>
+        <button 
+          className='menu-button' 
+          onClick={() => toggleMenu()}
+        >
+          <div className={activeMenu ? 'symbol active' : 'symbol'}>
+            <span className='hamburger'/>
+            <span className='close'/>
+          </div>
+          <div className={activeMenu ? 'button-text-wrapper slide-up' : 'button-text-wrapper'}>
+            <span className='button-text'>MENU</span>
+            <span className='button-text'>CLOSE</span>
+          </div>
+        </button>
+        <Link to='/'>
+          <span className='logo'>AUREA</span>
+        </Link>
+        <button 
+          className='book-button'
+          onClick={() => toggleBooking()}
+        >
+          <div className={activeBooking ? 'button-text-wrapper slide-up' : 'button-text-wrapper'}>
+            <span className='button-text'>BOOKING</span>
+            <span className='button-text'>CLOSE</span>
+          </div>
+          <span className='arrow' />
+          <RiShoppingBagLine className='icon' />
+        </button>
+      </nav>
+    </header>
+  )
 }
 
 export default Navbar

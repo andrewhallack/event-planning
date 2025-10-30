@@ -1,39 +1,37 @@
 import './hero.css'
-import img from '../../../assets/venue.jpg'
 
 import { Link } from 'react-router-dom'
-// eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from "framer-motion"
 import {  forwardRef, useRef } from "react"
+
+import hero from '../../../assets/Home/hero/hero.png'
+
 
 const Hero = forwardRef((props, ref) => {
 
   const imgRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: imgRef,
-    offset: ['start end', 'end start']
+    offset: ['start start', 'end start']
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ['-30%', '30%'])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 200])
 
   return (
-    <>
-      <section className='hero' ref={ref}>
-        <div className='bg-img-wrapper' ref={imgRef}>
-          <div className='overlay' />
-          <motion.img 
-            style={{ y }}
-            src={img} />
-        </div>
-        <div className='content'>
-            <div className='title'>
-                <h1>AUREA</h1>
-                <p>Quis sint esse non mollit ullamco.</p>
-                <Link to='/book' className="button filled">BOOK NOW</Link>
-            </div>
-        </div>
-      </section>
-    </>
+    <section className='hero' ref={ref}>
+      <span className='overlay' />
+      <div className='hero-img'>
+        <motion.img 
+          className='main-img' 
+          src={hero} 
+          style={{ y }}
+        />
+      </div>
+      <h1 className='title'>AUREA</h1>
+      <div className='subtitle'>
+        <h2><span>Event planing done with </span>taste, care, and character.</h2>
+      </div>
+    </section>
   )
 })
 

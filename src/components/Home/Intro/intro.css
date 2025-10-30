@@ -8,6 +8,11 @@
     padding: var(--space-2xl);
     background-color: var(--bg-color);
 
+    p {
+        max-width: 1000px;
+        text-align: center;
+    }
+
     /* &::before {
         content: '';
         width: 100%;
