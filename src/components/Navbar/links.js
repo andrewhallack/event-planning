@@ -1,7 +1,7 @@
 export const links = {
-    'HOME': '/',
-    'ABOUT': '/about',
-    'CONTACT': '/contact',
-    'SERVICES': '/services',
+    '/': 'HOME',
+    '/about': 'ABOUT',
+    '/contact': 'CONTACT',
+    '/services': 'SERVICES',
     
 }

@@ -1,20 +1,21 @@
-import { Link, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {  useState } from 'react'
 import { RiShoppingBagLine } from "react-icons/ri"
+import { 
+  FaInstagram,
+  FaFacebook,
+  FaTwitter,
+  FaYoutube
+} from "react-icons/fa"
 
 import { links } from './links'
 import './navbar.css'
+import hero from '../../assets/Home/hero/hero.png'
 
 
 const Navbar = () => {
-  const location = useLocation()
-  const [curPage, setCurPage] = useState(window.location.pathname)
   const [activeMenu, setActiveMenu] = useState(false)
   const [activeBooking, setActiveBooking] = useState(false)
-
-  useEffect(() => {
-      setCurPage(location.pathname)
-  }, [location])
 
   const toggleMenu = () => {
     setActiveMenu(!activeMenu)
@@ -51,9 +52,35 @@ const Navbar = () => {
             <span className='button-text'>BOOKING</span>
             <span className='button-text'>CLOSE</span>
           </div>
-          <span className='arrow' />
-          <RiShoppingBagLine className='icon' />
+          <div className={activeMenu ? 'symbol active' : 'symbol'}>
+            <span className='arrow' />
+            <RiShoppingBagLine className='icon' />
+          </div>
         </button>
+        <div className={activeMenu ? 'menu active' : 'menu'}>
+          <ul className='menu-items'>
+            {Object.entries(links).map(([key, val], i) => {
+              return (
+                <li key={i} className='menu-item'>
+                  <Link className='link' to={key} onClick={() => toggleMenu()}>
+                    <div className='link-text-wrapper'>
+                      <span className='link-number'>
+                        <span className='link-text'>0{i+1}</span>
+                        <span className='link-text'>0{i+1}</span>
+                      </span>
+                    </div>
+                    <div className='link-text-wrapper'>
+                      <span className='link-name'>
+                        <span className='link-text'>{val}</span>
+                        <span className='link-text'>{val}</span>
+                      </span>
+                    </div>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </nav>
     </header>
   )

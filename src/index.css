@@ -18,7 +18,7 @@
   --light: #f4f3f2;
   --dark: #222;
   --primary-color: #F6E9E4;
-  --accent: #D9B8A6;
+  --accent: #FBAD8F;
 
   /* 12-16
   16-24
@@ -72,6 +72,7 @@
 body {
   position: relative;
   color: var(--light);
+  background-color: var(--dark);
 }
 
 * {
@@ -170,6 +171,6 @@ a {
   img {
     object-fit: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
   }
 }
